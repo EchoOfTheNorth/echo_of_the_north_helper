@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token");
+
+      if (token) {
+        // Try to open the app via deep link
+        window.location.href = `myapp://reset-password?token=${token}`;
+  
+      } else {
+        document.body.innerHTML = "<h2>Invalid or missing token.</h2>";
+      }
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 100px;
+        background: #f9f9f9;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Redirecting to the app...</h1>
+    <p>If nothing happens, please make sure you have the app installed.</p>
+  </body>
+</html>
