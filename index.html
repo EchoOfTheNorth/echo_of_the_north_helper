@@ -7,17 +7,16 @@
     <script>
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
+      const action = params.get("action");
 
-      if (token) {
-        const path = window.location.pathname.toLowerCase();
-
-        if (path.includes("reset")) {
+      if (token && action) {
+        if (action === "reset") {
           window.location.href = `myapp://reset-password?token=${token}`;
         } else {
           window.location.href = `myapp://register?token=${token}`;
         }
       } else {
-        document.body.innerHTML = "<h2>Invalid or missing token.</h2>";
+        document.body.innerHTML = "<h2>Invalid or missing token/action.</h2>";
       }
     </script>
     <style>
