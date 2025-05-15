@@ -9,9 +9,13 @@
       const token = params.get("token");
 
       if (token) {
-        // Try to open the app via deep link
-        window.location.href = `myapp://reset-password?token=${token}`;
-  
+        const path = window.location.pathname.toLowerCase();
+
+        if (path.includes("reset")) {
+          window.location.href = `myapp://reset-password?token=${token}`;
+        } else {
+          window.location.href = `myapp://register?token=${token}`;
+        }
       } else {
         document.body.innerHTML = "<h2>Invalid or missing token.</h2>";
       }
